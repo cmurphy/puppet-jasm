@@ -25,7 +25,12 @@
 #
 # Copyright 2014 Colleen Murphy
 #
-class jasm {
+class jasm (
+  $port              = 22,
+  $syslog_facility   = 'AUTH',
+  $log_level         = 'INFO',
+  $permit_root_login = 'no',
+){
 
   package { 'openssh-server':
     ensure => installed,
@@ -33,8 +38,8 @@ class jasm {
   }
 
   file { '/etc/ssh/sshd_config':
-    ensure => file,
-    source => 'puppet:///modules/jasm/sshd_config',
+    ensure  => file,
+    content => template('jasm/sshd_config.erb'),
   }
 
   service { 'ssh':
