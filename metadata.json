@@ -1,0 +1,17 @@
+{
+  "name": "cmurphy-jasm",
+  "version": "0.1.0",
+  "author": "cmurphy",
+  "summary": "Just Another SSH Module",
+  "license": "Apache 2.0",
+  "source": "http://github.com/cmurphy/puppet-jasm",
+  "project_page": "https://github.com/cmurphy/puppet-jasm",
+  "issues_url": "https://github.com/cmurphy/puppet-jasm/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+
