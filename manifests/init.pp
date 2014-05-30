@@ -25,10 +25,7 @@
 #
 # Copyright 2014 Colleen Murphy
 #
-class jasm (
-  $port              = 22,
-  $syslog_facility   = 'AUTH',
-  $log_level         = 'INFO',
+class jasm(
   $permit_root_login = 'no',
 ){
   include jasm::params
@@ -41,6 +38,15 @@ class jasm (
   file { '/etc/ssh/sshd_config':
     ensure  => file,
     content => template('jasm/sshd_config.erb'),
+  }
+
+  augeas { 'sshd_config_permit_root_login':
+    context => '/files/etc/ssh/sshd_config',
+    changes => [
+      "set PermitRootLogin $permit_root_login",
+    ],
+    require => File['/etc/ssh/sshd_config'],
+
   }
 
   service { $jasm::params::ssh_svc:
