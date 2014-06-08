@@ -1,79 +1,53 @@
-# jasm
+# jasm - Just Another SSH Module
 
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with jasm](#setup)
-    * [What jasm affects](#what-jasm-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with jasm](#beginning-with-jasm)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+2. [Setup](#setup)
+3. [Testing](#testing)
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
-
-## Module Description
-
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+Just Another SSH module is a practice module to demonstrate different strategies for
+designing and testing modules. It uses sshd as an example service. It should
+not be used to configure sshd in a production environment. This code was used
+in my introductory talk on (writing and publishing Puppet modules)[http://www.slideshare.net/PuppetLabs/triageathon-june-2014-writing-and-publishing-puppet-modules]
 
 ## Setup
 
-### What jasm affects
+This module is not on the forge. To use it, clone it into your version control
+system or directly into your modulepath. Run the module with `puppet apply
+-e "include jasm"` or write a manifest or node definition to use this module.
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+The jasm module has a number of branches demonstrating different ways to approach
+the design of this module. The best example of an ssh module is
+[saz's](https://github.com/saz/puppet-ssh), but the simplistic approaches
+demonstrated here can give you ideas for designing a module for your service.
 
-### Setup Requirements **OPTIONAL**
+### Testing
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+This module demonstrates rspec-puppet and beaker-rspec. Before running any tests, run
 
-### Beginning with jasm
+```
+bundle install
+```
 
-The very basic steps needed for a user to get the module up and running.
+#### rspec-puppet
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Relevant files are `spec/spec\_helper.rb` `and spec/classes/\*`.
 
-## Usage
+```
+bundle exec rake spec
+```
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+#### beaker-rspec
 
-## Reference
+Relevant files are `spec/spec\_helper\_acceptance.rb` and `spec/acceptance/\*`, Requires vagrant
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+```
+bundle exec rspec spec/acceptance
+```
 
-## Limitations
+#### puppet-lint
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+bundle exec rake lint
