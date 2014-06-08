@@ -10,5 +10,8 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 class { 'jasm':
-  permit_root_login => 'without-password',
+  ports   => [22, 2222],
+  options => {
+    'PermitRootLogin' => 'without-password',
+  }
 }

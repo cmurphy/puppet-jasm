@@ -26,10 +26,8 @@
 # Copyright 2014 Colleen Murphy
 #
 class jasm (
-  $port              = 22,
-  $syslog_facility   = 'AUTH',
-  $log_level         = 'INFO',
-  $permit_root_login = 'no',
+  $ports   = [ 22 ],
+  $options = {}
 ){
   include jasm::params
 
