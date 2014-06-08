@@ -31,6 +31,7 @@ class jasm (
   $log_level         = 'INFO',
   $permit_root_login = 'no',
 ){
+  include jasm::params
 
   package { 'openssh-server':
     ensure => installed,
@@ -42,7 +43,7 @@ class jasm (
     content => template('jasm/sshd_config.erb'),
   }
 
-  service { 'ssh':
+  service { $jasm::params::ssh_svc:
     ensure    => running,
     subscribe => File['/etc/ssh/sshd_config'],
   }
