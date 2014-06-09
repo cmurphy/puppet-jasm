@@ -1,5 +1,7 @@
-require 'spec_helper_acceptance'
+# Basic beaker-rspec test file
+require 'spec_helper_acceptance'  # lives in spec/spec_helper_acceptance.rb
 
+# Define variables based on facts
 case fact('osfamily')
 when 'Debian'
   servicename = 'ssh'
@@ -19,10 +21,12 @@ describe 'jasm class' do
       apply_manifest(pp, :catch_failures => true)
     end
 
+    # Check that the package was installed
     describe package('openssh-server') do
       it { should be_installed }
     end
 
+    # Check that the correct service is running
     describe service(servicename) do
       it { should be_running }
     end
