@@ -11,7 +11,7 @@
 Just Another SSH module is a practice module to demonstrate different strategies for
 designing and testing modules. It uses sshd as an example service. It should
 not be used to configure sshd in a production environment. This code was used
-in my introductory talk on (writing and publishing Puppet modules)[http://www.slideshare.net/PuppetLabs/triageathon-june-2014-writing-and-publishing-puppet-modules]
+in my introductory talk on [writing and publishing Puppet modules](http://www.slideshare.net/PuppetLabs/triageathon-june-2014-writing-and-publishing-puppet-modules)
 
 ## Setup
 
