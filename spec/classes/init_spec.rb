@@ -1,4 +1,5 @@
-require 'spec_helper'
+# Basic rspec-puppet test file
+require 'spec_helper' # lives in spec/spec_helper.rb
 describe 'jasm' do
 
   describe "on osfamily RedHat" do

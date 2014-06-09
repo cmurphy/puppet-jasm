@@ -1,21 +1,13 @@
 # == Class: jasm
 #
-# The jasm class, for the moment, very light-handedly configures an SSH
-# server on Debian-family systems.
-#
-# === Parameters
-#
-# This class does not accept parameters yet.
-#
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# This version of the jasm class uses augeas with the default provider
+# to configure the sshd_config file.
 #
 # === Examples
 #
-#  include jasm
+#  class { 'jasm':
+#    permit_root_login => 'without-password',
+#  }
 #
 # === Authors
 #

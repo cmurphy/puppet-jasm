@@ -1,3 +1,8 @@
+# == Class: jasm::params
+#
+# The jasm::params class provides smart defaults for the ssh service name
+# for Debian and Redhat.
+
 class jasm::params {
   case $::osfamily {
     'Debian': {
